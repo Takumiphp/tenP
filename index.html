@@ -6,7 +6,35 @@
     <title>点P問題</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
     <script src="drow.js" defer></script>
+    <script src="button.js"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
+    <div id="canvas-container"></div>
+    <div id="selectType-container">
+        <select name="shapes">
+            <option value="notSelect">選択してください</option>
+            <option value="Triangle">三角形</option>
+            <option value="Square">四角形</option>
+            <option value="Circle">円</option>
+        </select>
+    </div>
+    <div id="Triangle">
+        <input type="number" id="Triangle_bottom" name="name" maxlength="8" size="10" />
+        <input type="number" id="Triangle_height" name="name" maxlength="8" size="10" />
+
+    </div>
+    <div id="Square">
+        <input type="number" id="Square_width" name="name" maxlength="8" size="10" />
+        <input type="number" id="Square_height" name="name" maxlength="8" size="10" />
+    </div>
+    <div id="Circle">
+        <input type="number" id="Circle_radius" name="name" maxlength="8" size="10" />
+    </div>
+    <button id="make" onclick="buttonClick()">作成</button>
 </body>
 </html>
