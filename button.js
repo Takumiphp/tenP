@@ -19,10 +19,7 @@ function buttonClick() {
             vertex(triangle[i].x, triangle[i].y);
         }
         endShape(CLOSE);
-        stroke('red');
-        strokeWeight(10);
-        let a = createVector(10, 10);
-        point(a);
+        pointAndColor();
     } else if(selectBox.value ==="Square"){
         removeCanvas();
         // 始点のx座標、始点のy座標、横幅、縦幅
@@ -30,8 +27,21 @@ function buttonClick() {
     } else if(selectBox.value ==="Circle"){
 
     }
-    
 }
+// 点を打つ
+function pointAndColor(){
+    strokeWeight(10);
+    let p1 = createVector(document.getElementById('Triangle1_x').value*100+canvasWidth_half, document.getElementById('Triangle1_y').value*-100+canvasHeight_half);
+    let p2 = createVector(document.getElementById('Triangle2_x').value*100+canvasWidth_half, document.getElementById('Triangle2_y').value*-100+canvasHeight_half);
+    let p3 = createVector(document.getElementById('Triangle3_x').value*100+canvasWidth_half, document.getElementById('Triangle3_y').value*-100+canvasHeight_half);
+    stroke('red');
+    point(p1);
+    stroke('blue');
+    point(p2);
+    stroke('green');
+    point(p3);
+}
+
     document.addEventListener("DOMContentLoaded", function () {
         selectBox = document.querySelector("select[name='shapes']");
         var triangleDiv = document.getElementById("Triangle");
