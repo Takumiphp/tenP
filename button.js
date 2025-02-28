@@ -5,7 +5,24 @@ function buttonClick() {
     let height = document.getElementById('Square_height');
 
     if(selectBox.value ==="Triangle"){
-        
+        removeCanvas();
+        const triangle = [
+            {x: document.getElementById('Triangle1_x').value*100+canvasWidth_half, y: document.getElementById('Triangle1_y').value*-100+canvasHeight_half},
+            {x: document.getElementById('Triangle2_x').value*100+canvasWidth_half, y: document.getElementById('Triangle2_y').value*-100+canvasHeight_half},
+            {x: document.getElementById('Triangle3_x').value*100+canvasWidth_half, y: document.getElementById('Triangle3_y').value*-100+canvasHeight_half}
+        ];
+        fill('lightblue');
+        stroke('black');
+        strokeWeight(2);
+        beginShape();
+        for (let i = 0; i < triangle.length; i++) {
+            vertex(triangle[i].x, triangle[i].y);
+        }
+        endShape(CLOSE);
+        stroke('red');
+        strokeWeight(10);
+        let a = createVector(10, 10);
+        point(a);
     } else if(selectBox.value ==="Square"){
         removeCanvas();
         // 始点のx座標、始点のy座標、横幅、縦幅
