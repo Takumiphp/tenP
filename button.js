@@ -42,6 +42,21 @@ function pointAndColor(){
     point(p3);
 }
 
+function makePoint(){
+	strokeWeight(10);
+	let point1 = createVector(document.getElementById('Point1_x').value*100+canvasWidth_half, document.getElementById('Point1_y').value*-100+canvasHeight_half);
+	let point2 = createVector(document.getElementById('Point2_x').value*100+canvasWidth_half, document.getElementById('Point2_y').value*-100+canvasHeight_half);
+	stroke('black');
+	point(point1);
+	point(point2);
+}
+
+function makeLine(){
+	strokeWeight(2);
+	stroke('black');
+	line(document.getElementById('Point1_x').value*100+canvasWidth_half, document.getElementById('Point1_y').value*-100+canvasHeight_half,document.getElementById('Point2_x').value*100+canvasWidth_half, document.getElementById('Point2_y').value*-100+canvasHeight_half);
+}
+
     document.addEventListener("DOMContentLoaded", function () {
         selectBox = document.querySelector("select[name='shapes']");
         var triangleDiv = document.getElementById("Triangle");
