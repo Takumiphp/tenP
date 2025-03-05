@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>点P問題</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <script src="Argument.js" defer></script><!-- 共通変数 -->
+    <script src="CommonFunction.js"></script><!-- 共通関数 -->
     <script src="Triangle.js"></script> <!-- 三角形 -->
     <script src="Square.js"></script> <!-- 四角形 -->
     <script src="drow.js" defer></script><!-- 線の作成 -->
-    <script src="Argument.js" defer></script><!-- 共通変数 -->
-    <script src="CommonFunction.js"></script><!-- 共通関数 -->
     <script src="execution.js" defer></script><!-- 実行 -->
     <style>
         .hidden {
@@ -29,14 +29,22 @@
         (cm)
     </div>
     <div id="Triangle">
-        赤：x軸1　<input type="number" id="Triangle1_x" name="name" maxlength="8" size="10" />
-        y軸1　<input type="number" id="Triangle1_y" name="name" maxlength="8" size="10" /><br>
-        青：x軸2　<input type="number" id="Triangle2_x" name="name" maxlength="8" size="10" />
-        y軸2　<input type="number" id="Triangle2_y" name="name" maxlength="8" size="10" /><br>
-        緑：x軸3　<input type="number" id="Triangle3_x" name="name" maxlength="8" size="10" />
-        y軸3　<input type="number" id="Triangle3_y" name="name" maxlength="8" size="10" /><br>
+        赤：x座標1　<input type="number" id="Triangle1_x" name="name" maxlength="8" size="10" />
+        y座標1　<input type="number" id="Triangle1_y" name="name" maxlength="8" size="10" /><br>
+        青：x座標2　<input type="number" id="Triangle2_x" name="name" maxlength="8" size="10" />
+        y座標2　<input type="number" id="Triangle2_y" name="name" maxlength="8" size="10" /><br>
+        緑：x座標3　<input type="number" id="Triangle3_x" name="name" maxlength="8" size="10" />
+        y座標3　<input type="number" id="Triangle3_y" name="name" maxlength="8" size="10" /><br>
     </div>
     <div id="Square">
+        赤：x座標1　<input type="number" id="Square1_x" name="name" maxlength="8" size="10" />
+        y座標1　<input type="number" id="Square1_y" name="name" maxlength="8" size="10" /><br>
+        青：x座標2　<input type="number" id="Square2_x" name="name" maxlength="8" size="10" />
+        y座標2　<input type="number" id="Square2_y" name="name" maxlength="8" size="10" /><br>
+        緑：x座標3　<input type="number" id="Square3_x" name="name" maxlength="8" size="10" />
+        y座標3　<input type="number" id="Square3_y" name="name" maxlength="8" size="10" /><br>
+        黄：x座標4　<input type="number" id="Square4_x" name="name" maxlength="8" size="10" />
+        y座標4　<input type="number" id="Square4_y" name="name" maxlength="8" size="10" /><br>
         <input type="number" id="Square_width" name="name" maxlength="8" size="10" />
         <input type="number" id="Square_height" name="name" maxlength="8" size="10" />
     </div>
