@@ -12,13 +12,7 @@ window.SquareMaking = {
             {x: document.getElementById('Square4_x').value*100+canvasWidth_half, y: document.getElementById('Square4_y').value*-100+canvasHeight_half}            
         ];
         execution(triangle)
-        window.Triangle.pointAndColor();
-    }
-};
-//入力された値の箇所に点を作成
-window.Triangle = {
-    pointAndColor: function() {
-       // メソッド1の定義
+        //入力された値の箇所に点を作成
        strokeWeight(10);
        let p1 = createVector(document.getElementById('Square1_x').value*100+canvasWidth_half, document.getElementById('Square1_y').value*-100+canvasHeight_half);
        let p2 = createVector(document.getElementById('Square2_x').value*100+canvasWidth_half, document.getElementById('Square2_y').value*-100+canvasHeight_half);

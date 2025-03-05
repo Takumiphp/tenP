@@ -24,11 +24,14 @@
             <option value="notSelect">選択してください</option>
             <option value="Triangle">三角形</option>
             <option value="Square">四角形</option>
-            <option value="Circle">円</option>
+            <!-- <option value="Circle">円</option> -->
         </select>
         (cm)
     </div>
     <div id="Triangle">
+        <div>========= </div>
+        <div>・三角形作成 </div>
+        <div>=========</div>
         赤：x座標1　<input type="number" id="Triangle1_x" name="name" maxlength="8" size="10" />
         y座標1　<input type="number" id="Triangle1_y" name="name" maxlength="8" size="10" /><br>
         青：x座標2　<input type="number" id="Triangle2_x" name="name" maxlength="8" size="10" />
@@ -37,6 +40,9 @@
         y座標3　<input type="number" id="Triangle3_y" name="name" maxlength="8" size="10" /><br>
     </div>
     <div id="Square">
+        <div>========= </div>
+        <div>・四角形作成 </div>
+        <div>=========</div>
         赤：x座標1　<input type="number" id="Square1_x" name="name" maxlength="8" size="10" />
         y座標1　<input type="number" id="Square1_y" name="name" maxlength="8" size="10" /><br>
         青：x座標2　<input type="number" id="Square2_x" name="name" maxlength="8" size="10" />
@@ -44,17 +50,18 @@
         緑：x座標3　<input type="number" id="Square3_x" name="name" maxlength="8" size="10" />
         y座標3　<input type="number" id="Square3_y" name="name" maxlength="8" size="10" /><br>
         黄：x座標4　<input type="number" id="Square4_x" name="name" maxlength="8" size="10" />
-        y座標4　<input type="number" id="Square4_y" name="name" maxlength="8" size="10" /><br>
-        <input type="number" id="Square_width" name="name" maxlength="8" size="10" />
-        <input type="number" id="Square_height" name="name" maxlength="8" size="10" />
+        y座標4　<input type="number" id="Square4_y" name="name" maxlength="8" size="10" /><br>      
     </div>
     <div id="Circle">
         <input type="number" id="Circle_radius" name="name" maxlength="8" size="10" />
     </div>
 <button id="make" onclick="buttonClick()">作成</button><br>
-        点1：x軸　<input type="number" id="Point1_x" name="name" maxlength="8" size="10" />
+    <div>===== </div>
+    <div>・点作成 </div>
+    <div>===== </div>
+        x座標　<input type="number" id="Point1_x" name="name" maxlength="8" size="10" />
         y軸　<input type="number" id="Point1_y" name="name" maxlength="8" size="10" /><br>
-        点2：x軸　<input type="number" id="Point2_x" name="name" maxlength="8" size="10" />
+        x座標　<input type="number" id="Point2_x" name="name" maxlength="8" size="10" />
         y軸　<input type="number" id="Point2_y" name="name" maxlength="8" size="10" /><br>
     <button id="make" onclick="makePoint()">点を打つ</button><button id="make" onclick="makeLine()">線を引く</button>
 </body>

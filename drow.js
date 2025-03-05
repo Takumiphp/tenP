@@ -55,8 +55,10 @@ function setup() {
     
     for (let x = 0; x <= width; x += step) {
       if(x / 100 - width / 200 != 0){
-        text(x / 100 - width / 200, x, height / 2 + 20);
-      }
+       text(x / 100 - width / 200, x, height / 2 + 20);       
+      }else{
+        text(x / 100 - width / 200, x -20, height / 2 + 20);
+      };
   }
 
   for (let y = 0; y <= height; y += step) {
