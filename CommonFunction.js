@@ -18,18 +18,50 @@
 // 点の作成
 function makePoint(){
 	strokeWeight(10);
-	let point1 = createVector(document.getElementById('Point1_x').value*100+canvasWidth_half, document.getElementById('Point1_y').value*-100+canvasHeight_half);
-	let point2 = createVector(document.getElementById('Point2_x').value*100+canvasWidth_half, document.getElementById('Point2_y').value*-100+canvasHeight_half);
+	let point1 = createVector(document.getElementById('Point1_x').value*100/magnification+canvasWidth_half, document.getElementById('Point1_y').value*-100/magnification+canvasHeight_half);
+	let point2 = createVector(document.getElementById('Point2_x').value*100/magnification+canvasWidth_half, document.getElementById('Point2_y').value*-100/magnification+canvasHeight_half);
 	stroke('black');
 	point(point1);
 	point(point2);
+    window.pushFunc("Point");
 }
 
 // 線の作成
 function makeLine(){
 	strokeWeight(2);
 	stroke('black');
-	line(document.getElementById('Point1_x').value*100+canvasWidth_half, document.getElementById('Point1_y').value*-100+canvasHeight_half,document.getElementById('Point2_x').value*100+canvasWidth_half, document.getElementById('Point2_y').value*-100+canvasHeight_half);
+	line(document.getElementById('Point1_x').value*100/magnification+canvasWidth_half, document.getElementById('Point1_y').value*-100/magnification+canvasHeight_half,document.getElementById('Point2_x').value*100/magnification+canvasWidth_half, document.getElementById('Point2_y').value*-100/magnification+canvasHeight_half);
+    window.pushFunc("Line");
+}
+
+// 最後に押下したボタンを保存
+window.pushFunc = function(func){
+    console.log("ここまで");
+    if(lastFuc.length === 0){
+        lastFuc.push(func);
+    } else {
+        lastFuc.pop();
+        lastFuc.push(func);
+    }
+}
+
+window.doFunc = function(){
+    if(lastFuc.length != 0){
+        switch (lastFuc[0]) {
+            case "Triangle":
+                window.TriangleMaking.TriangleID();
+                break;
+            case "Square":
+                window.TriangleMaking.SquareID();
+                break;
+            case "Point":
+                makePoint();
+                break;
+            case "Line":
+                makeLine();
+                break;
+        }
+    }
 }
 
 // 図形の選択
@@ -63,6 +95,4 @@ function makeLine(){
             }
         });
     });
-
-// 1cm = 50
 

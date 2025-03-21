@@ -5,9 +5,9 @@
 window.TriangleMaking = {
     TriangleID: function() {        
         const triangle = [
-            {x: document.getElementById('Triangle1_x').value*100+canvasWidth_half, y: document.getElementById('Triangle1_y').value*-100+canvasHeight_half},
-            {x: document.getElementById('Triangle2_x').value*100+canvasWidth_half, y: document.getElementById('Triangle2_y').value*-100+canvasHeight_half},
-            {x: document.getElementById('Triangle3_x').value*100+canvasWidth_half, y: document.getElementById('Triangle3_y').value*-100+canvasHeight_half}
+            {x: document.getElementById('Triangle1_x').value*100/magnification+canvasWidth_half, y: document.getElementById('Triangle1_y').value*-100/magnification+canvasHeight_half},
+            {x: document.getElementById('Triangle2_x').value*100/magnification+canvasWidth_half, y: document.getElementById('Triangle2_y').value*-100/magnification+canvasHeight_half},
+            {x: document.getElementById('Triangle3_x').value*100/magnification+canvasWidth_half, y: document.getElementById('Triangle3_y').value*-100/magnification+canvasHeight_half}
         ];
         execution(triangle)
                 
@@ -15,16 +15,16 @@ window.TriangleMaking = {
        strokeWeight(10);
         
        let p1 = createVector(
-           Number(document.getElementById('Triangle1_x').value) * 100 + canvasWidth_half, 
-           Number(document.getElementById('Triangle1_y').value) * -100 + canvasHeight_half
+           Number(document.getElementById('Triangle1_x').value) * 100 / magnification + canvasWidth_half, 
+           Number(document.getElementById('Triangle1_y').value) * -100 / magnification + canvasHeight_half
        );
        let p2 = createVector(
-           Number(document.getElementById('Triangle2_x').value) * 100 + canvasWidth_half, 
-           Number(document.getElementById('Triangle2_y').value) * -100 + canvasHeight_half
+           Number(document.getElementById('Triangle2_x').value) * 100 / magnification + canvasWidth_half, 
+           Number(document.getElementById('Triangle2_y').value) * -100 / magnification + canvasHeight_half
        );
        let p3 = createVector(
-           Number(document.getElementById('Triangle3_x').value) * 100 + canvasWidth_half, 
-           Number(document.getElementById('Triangle3_y').value) * -100 + canvasHeight_half
+           Number(document.getElementById('Triangle3_x').value) * 100 / magnification + canvasWidth_half, 
+           Number(document.getElementById('Triangle3_y').value) * -100 / magnification + canvasHeight_half
        );
 
        // colors 配列の安全チェック
