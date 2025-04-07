@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点P問題</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        window.SquareMaking = {
+    SquareID: function() {        
+        const triangle = [
+            {x: document.getElementById('Square1_x').value*100/magnification+canvasWidth_half, y: document.getElementById('Square1_y').value*-100/magnification+canvasHeight_half},
+            {x: document.getElementById('Square2_x').value*100/magnification+canvasWidth_half, y: document.getElementById('Square2_y').value*-100/magnification+canvasHeight_half},
+            {x: document.getElementById('Square3_x').value*100/magnification+canvasWidth_half, y: document.getElementById('Square3_y').value*-100/magnification+canvasHeight_half},
+            {x: document.getElementById('Square4_x').value*100/magnification+canvasWidth_half, y: document.getElementById('Square4_y').value*-100/magnification+canvasHeight_half}            
+        ];
+        execution(triangle)
+        //入力された値の箇所に点を作成
+       strokeWeight(10);
+       let p1 = createVector(document.getElementById('Square1_x').value*100/magnification+canvasWidth_half, document.getElementById('Square1_y').value*-100/magnification+canvasHeight_half);
+       let p2 = createVector(document.getElementById('Square2_x').value*100/magnification+canvasWidth_half, document.getElementById('Square2_y').value*-100/magnification+canvasHeight_half);
+       let p3 = createVector(document.getElementById('Square3_x').value*100/magnification+canvasWidth_half, document.getElementById('Square3_y').value*-100/magnification+canvasHeight_half);
+       let p4 = createVector(document.getElementById('Square4_x').value*100/magnification+canvasWidth_half, document.getElementById('Square4_y').value*-100/magnification+canvasHeight_half);
+       stroke((window.colors[0]));
+       point(p1);
+       stroke((window.colors[1]));
+       point(p2);
+       stroke((window.colors[2]));
+       point(p3);
+       stroke((window.colors[3]));
+       point(p4);
+    }
+};
+
+window.buttonClick = function() {
+    removeCanvas();    
+    if(window.selectBox.value ==="Triangle"){//三角              
+        //三角形の作成
+        window.TriangleMaking.TriangleID();
+        window.pushFunc("Triangle");
+    } else if(selectBox.value ==="Square"){//四角
+        //四角形の作成
+        window.SquareMaking.SquareID();
+        window.pushFunc("Square");
+    } else if(selectBox.value ==="Circle"){//円※検討中。
+        window.pushFunc("Circle");
+    }
+}
+
+window.TriangleMaking = {
+    TriangleID: function() {        
+        const triangle = [
+            {x: document.getElementById('Triangle1_x').value*100/magnification+canvasWidth_half, y: document.getElementById('Triangle1_y').value*-100/magnification+canvasHeight_half},
+            {x: document.getElementById('Triangle2_x').value*100/magnification+canvasWidth_half, y: document.getElementById('Triangle2_y').value*-100/magnification+canvasHeight_half},
+            {x: document.getElementById('Triangle3_x').value*100/magnification+canvasWidth_half, y: document.getElementById('Triangle3_y').value*-100/magnification+canvasHeight_half}
+        ];
+        execution(triangle)
+                
+        //入力された値の箇所に点を作成
+       strokeWeight(10);
+        
+       let p1 = createVector(
+           Number(document.getElementById('Triangle1_x').value) * 100 / magnification + canvasWidth_half, 
+           Number(document.getElementById('Triangle1_y').value) * -100 / magnification + canvasHeight_half
+       );
+       let p2 = createVector(
+           Number(document.getElementById('Triangle2_x').value) * 100 / magnification + canvasWidth_half, 
+           Number(document.getElementById('Triangle2_y').value) * -100 / magnification + canvasHeight_half
+       );
+       let p3 = createVector(
+           Number(document.getElementById('Triangle3_x').value) * 100 / magnification + canvasWidth_half, 
+           Number(document.getElementById('Triangle3_y').value) * -100 / magnification + canvasHeight_half
+       );
+
+       // colors 配列の安全チェック
+       if (!window.colors || !Array.isArray(window.colors) || window.colors.length < 3) {
+           console.error("Error: window.colors is not properly initialized.", window.colors);
+           return;
+       }
+
+       // 各ポイントに異なる色を適用
+       stroke(window.colors[0]);
+       strokeWeight(10);
+       point(p1.x, p1.y);
+
+       stroke(window.colors[1]);
+       strokeWeight(10);
+       point(p2.x, p2.y);
+
+       stroke(window.colors[2]);
+       strokeWeight(10);
+       point(p3.x, p3.y);
+    }
+};
+
+//図形の作成実行
+function execution(Target){
+        fill('lightblue');
+        stroke('black');
+        strokeWeight(2);
+    beginShape();
+    for (let i = 0; i < Target.length; i++) {
+        vertex(Target[i].x, Target[i].y);
+    }
+    endShape(CLOSE);
+    
+}
+
+// 点の作成
+function makePoint(){
+	strokeWeight(10);
+	let point1 = createVector(document.getElementById('Point1_x').value*100/magnification+canvasWidth_half, document.getElementById('Point1_y').value*-100/magnification+canvasHeight_half);
+	let point2 = createVector(document.getElementById('Point2_x').value*100/magnification+canvasWidth_half, document.getElementById('Point2_y').value*-100/magnification+canvasHeight_half);
+	stroke('black');
+	point(point1);
+	point(point2);
+    window.pushFunc("Point");
+}
+
+// 線の作成
+function makeLine(){
+	strokeWeight(2);
+	stroke('black');
+	line(document.getElementById('Point1_x').value*100/magnification+canvasWidth_half, document.getElementById('Point1_y').value*-100/magnification+canvasHeight_half,document.getElementById('Point2_x').value*100/magnification+canvasWidth_half, document.getElementById('Point2_y').value*-100/magnification+canvasHeight_half);
+    window.pushFunc("Line");
+}
+
+// 最後に押下したボタンを保存
+window.pushFunc = function(func){
+    console.log("ここまで");
+    if(lastFuc.length === 0){
+        lastFuc.push(func);
+    } else {
+        lastFuc.pop();
+        lastFuc.push(func);
+    }
+}
+
+window.doFunc = function(){
+    if(lastFuc.length != 0){
+        switch (lastFuc[0]) {
+            case "Triangle":
+                window.TriangleMaking.TriangleID();
+                break;
+            case "Square":
+                window.TriangleMaking.SquareID();
+                break;
+            case "Point":
+                makePoint();
+                break;
+            case "Line":
+                makeLine();
+                break;
+        }
+    }
+}
+
+// 図形の選択
+    document.addEventListener("DOMContentLoaded", function () {
+        window.selectBox = document.querySelector("select[name='shapes']");
+        var triangleDiv = document.getElementById("Triangle");
+        var squareDiv = document.getElementById("Square");
+        var circleDiv = document.getElementById("Circle");
+
+        // 初期状態で非表示にする
+        triangleDiv.style.display = "none";
+        squareDiv.style.display = "none";
+        circleDiv.style.display = "none";
+
+        // セレクトボックスの変更イベントを監視
+        window.selectBox.addEventListener("change", function () {
+            if (window.selectBox.value === "Triangle") {
+                triangleDiv.style.display = "block";
+            } else {
+                triangleDiv.style.display = "none";
+            }
+            if (window.selectBox.value === "Square") {
+                squareDiv.style.display = "block";
+            } else {
+                squareDiv.style.display = "none";
+            }
+            if (window.selectBox.value === "Circle") {
+                circleDiv.style.display = "block";
+            } else {
+                circleDiv.style.display = "none";
+            }
+        });
+    });
+    let cnv;
+const canvasHeight = 600;
+const canvasWidth = 600;
+const canvasHeight_half = 300;
+const canvasWidth_half = 300;
+let magnification = 1.0;
+let step = 50; // グリッドの間隔は固定
+let scaleFactor = 1; // 初期スケール（ラベルの倍率）
+const lastFuc = [];
+
+function setup() {
+  cnv = createCanvas(canvasHeight, canvasWidth);
+  cnv.parent("canvas-container");
+  drawGrid();
+}
+
+function draw() {}
+
+function mouseWheel(event) {
+  // マウスホイールの方向で scaleFactor を増減
+  if (event.delta < 0) {
+    scaleFactor *= 2; // 数字を増やす
+    magnification *= 2;
+  } else {
+    scaleFactor /= 2; // 数字を減らす
+    magnification /= 2;
+  }
+  console.log(lastFuc);
+  // 数値の範囲制限（最低 1、最大 100 まで）
+  scaleFactor = constrain(scaleFactor, 1, 50);
+  magnification = constrain(magnification, 1, 50);
+
+  // 再描画
+  removeCanvas();
+  doFunc();
+}
+
+function keyPressed() {
+  if (key === 'd') {
+    removeCanvas();
+  }
+}
+
+function removeCanvas() {
+  cnv.remove();
+  cnv = createCanvas(canvasHeight, canvasWidth);
+  cnv.parent("canvas-container");
+  drawGrid();
+}
+
+function drawGrid() {
+  cnv.background(255);
+  stroke(200);
+  strokeWeight(1);
+
+  // グリッド線（間隔は変えずに固定）
+  for (let x = 0; x <= width; x += step) {
+    line(x, 0, x, height);
+  }
+  for (let y = 0; y <= height; y += step) {
+    line(0, y, width, y);
+  }
+
+  // X軸・Y軸
+  stroke(0);
+  strokeWeight(2);
+  line(0, height / 2, width, height / 2);
+  line(width / 2, 0, width / 2, height);
+
+  // 座標ラベル
+  fill(0);
+  textSize(14);
+  textAlign(CENTER, CENTER);
+
+  // X軸のラベル（scaleFactor を掛ける）
+  for (let x = 0; x <= width; x += step*2) {
+    let label = ((x - width / 2) / 100) * scaleFactor;
+    if (label !== 0) {
+      text(label.toFixed(0), x, height / 2 + 20);
+    } else {
+      text(label.toFixed(0), x - 20, height / 2 + 20);
+    }
+  }
+
+  // Y軸のラベル（scaleFactor を掛ける）
+  for (let y = 0; y <= height; y += step*2) {
+    let label = ((height / 2 - y) / 100) * scaleFactor;
+    if (label !== 0) {
+      text(label.toFixed(0), width / 2 - 20, y);
+    }
+  }
+}
+    </script>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div id="selectType-container">
+        <select name="shapes">
+            <option value="notSelect">選択してください</option>
+            <option value="Triangle">三角形</option>
+            <option value="Square">四角形</option>
+            <!-- <option value="Circle">円</option> -->
+        </select>
+        (cm)
+    </div>
+    <div id="Triangle">
+        <div>========= </div>
+        <div>・三角形作成 </div>
+        <div>=========</div>
+        赤：x座標1　<input type="number" id="Triangle1_x" name="name" maxlength="8" size="10" />
+        y座標1　<input type="number" id="Triangle1_y" name="name" maxlength="8" size="10" /><br>
+        青：x座標2　<input type="number" id="Triangle2_x" name="name" maxlength="8" size="10" />
+        y座標2　<input type="number" id="Triangle2_y" name="name" maxlength="8" size="10" /><br>
+        緑：x座標3　<input type="number" id="Triangle3_x" name="name" maxlength="8" size="10" />
+        y座標3　<input type="number" id="Triangle3_y" name="name" maxlength="8" size="10" /><br>
+    </div>
+    <div id="Square">
+        <div>========= </div>
+        <div>・四角形作成 </div>
+        <div>=========</div>
+        赤：x座標1　<input type="number" id="Square1_x" name="name" maxlength="8" size="10" />
+        y座標1　<input type="number" id="Square1_y" name="name" maxlength="8" size="10" /><br>
+        青：x座標2　<input type="number" id="Square2_x" name="name" maxlength="8" size="10" />
+        y座標2　<input type="number" id="Square2_y" name="name" maxlength="8" size="10" /><br>
+        緑：x座標3　<input type="number" id="Square3_x" name="name" maxlength="8" size="10" />
+        y座標3　<input type="number" id="Square3_y" name="name" maxlength="8" size="10" /><br>
+        黄：x座標4　<input type="number" id="Square4_x" name="name" maxlength="8" size="10" />
+        y座標4　<input type="number" id="Square4_y" name="name" maxlength="8" size="10" /><br>      
+    </div>
+    <div id="Circle">
+        <input type="number" id="Circle_radius" name="name" maxlength="8" size="10" />
+    </div>
+<button id="make" onclick="buttonClick()">作成</button><br>
+    <div>===== </div>
+    <div>・点作成 </div>
+    <div>===== </div>
+        x座標　<input type="number" id="Point1_x" name="name" maxlength="8" size="10" />
+        y軸　<input type="number" id="Point1_y" name="name" maxlength="8" size="10" /><br>
+        x座標　<input type="number" id="Point2_x" name="name" maxlength="8" size="10" />
+        y軸　<input type="number" id="Point2_y" name="name" maxlength="8" size="10" /><br>
+    <button id="make" onclick="makePoint()">点を打つ</button><button id="make" onclick="makeLine()">線を引く</button>
+</body>
+</html>
